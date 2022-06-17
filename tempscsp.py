@@ -2,7 +2,7 @@
 #
 # For performing temporal smoothing with the time-causal limit kernel and
 # for computing discrete temporal derivative approximations by applying
-# central difference operators to the smoothed data.
+# temporal difference operators to the smoothed data.
 #
 # This code is the result of porting a subset of the routines in the Matlab
 # package tempscsp to Python, however, with different interfaces for the functions.
