@@ -10,7 +10,7 @@ package tempscsp to Python, however, with different interfaces for the functions
 References:
 
 Lindeberg (2022) "A time-causal and time-recursive temporal scale-space representation
-of temporal signals and past time", arXiv preprint arXiv:2202.09209.
+of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
 
 Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
 Journal of Mathematical Imaging and Vision 55(1): 50-88.

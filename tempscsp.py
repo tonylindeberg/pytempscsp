@@ -10,7 +10,7 @@
 # References:
 #
 # Lindeberg (2022) "A time-causal and time-recursive temporal scale-space representation
-# of temporal signals and past time", arXiv preprint arXiv:2202.09209.
+# of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
 #
 # Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
 # Journal of Mathematical Imaging and Vision 55(1): 50-88.
@@ -41,7 +41,8 @@
 # Note: This code is for offline filtering, for experimentation purposes
 # to work out properties of algorithms building on the time-causal limit kernel.
 # For real-time filtering, do instead use the explicit recursive formulation
-# in Equation (56) in (Lindeberg 2016).
+# in Equation (56) in (Lindeberg 2016). Such an implementation will also
+# be more memory-efficient for processing e.g. spatio-temporal or spectro-temporal data.
 
 
 from math import sqrt
