@@ -9,7 +9,7 @@
 #
 # References:
 #
-# Lindeberg (2022) "A time-causal and time-recursive temporal scale-space representation
+# Lindeberg (2023) "A time-causal and time-recursive temporal scale-space representation
 # of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
 #
 # Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
