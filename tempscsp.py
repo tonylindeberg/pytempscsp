@@ -10,14 +10,14 @@
 # References:
 #
 # Lindeberg (2023) "A time-causal and time-recursive temporal scale-space representation
-# of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
+# of temporal signals and past time", Biological Cybernetics 117(1-2): 21-59.
 #
 # Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
 # Journal of Mathematical Imaging and Vision 55(1): 50-88.
 #
 # The time-causal limit kernel was first defined in Lindeberg (2016), however,
 # then also in combination with a spatial domain, and experimentally tested on
-# video data. The later overview paper (Lindeberg 2022) gives a dedicated treatment
+# video data. The later overview paper (Lindeberg 2023) gives a dedicated treatment
 # for a a purely temporal domain, and also with relations to Koenderink's scale-time
 # kernels and the ex-Gaussian kernel.
 #
@@ -106,7 +106,7 @@ def limitkern_sospars_2layers(mu1, mu2):
     # Returns the sos parameters for two recursive filters in cascade
     # The following is the composition of two generating functions of the form
     # H1(z) * H2(z) = 1/(1 - mu1*(z-1)) * 1/(1 - mu2*(z-1))
-    #               = (b0 + b1*z + b2*z^2)/(a0 + b1*z + b2*z^2)
+    #               = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
     # based on Equation (57) in (Lindeberg 2016)
     a = [1 + mu1 + mu2 + mu1*mu2, -mu1 - mu2 - 2*mu1*mu2, mu1*mu2]
     b = [1.0, 0, 0]
@@ -122,7 +122,7 @@ def limitkern_sospars_1layer(mu):
     # Returns the sos parameters for a single recursive filter
     # The following is a single generating function of the form
     # H(z) = 1/(1 - mu*(z-1)) 
-    #      = (b0 + b1*z + b2*z^2)/(a0 + b1*z + b2*z^2)
+    #      = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
     # according to Equation (57) in (Lindeberg 2016)
     a = [1 + mu, -mu, 0]
     b = [1.0, 0, 0]
