@@ -23,7 +23,7 @@ kernels and the ex-Gaussian kernel.
 
 Compared to the original Matlab code underlying the published experiments,
 the following implementation is reduced in the following ways:
-- there is no implementation of Lp-normalization (which for effiency
+- there is no implementation of Lp-normalization (which for efficiency
   reasons should be done in combination with a disk cashing mechanism)
 - there are no alternative non-causal temporal smoothing methods in this package
 - this reimplementation has not yet been thoroughly tested
@@ -35,7 +35,7 @@ unnessarily large for c = 2, whereas a larger number of scale levels may be
 needed for smaller values of c. If computational efficiency of the implementation
 is important, such as in the combination with a spatial image domain for video
 analysis, then it may be recommended to optimize the value of this parameter
-by choosing a different trade-off between computational effiency and accuracy
+by choosing a different trade-off between computational efficiency and accuracy
 of the approximation.
 
 Note: This code is for offline filtering, for experimentation purposes
@@ -106,7 +106,7 @@ def mufromstddevs(
     numextralevels = ceil(log(stddevmax / stddevmin) / log(c))
 
     # Use the functionality for the function based on a single scale output
-    newstddevmax = stddevmin * c**(numextralevels)
+    newstddevmax = stddevmin * c ** numextralevels
     mu, sigma = mufromstddev(newstddevmax, c, numextralevels + numlevels)
     
     return mu, sigma
@@ -307,7 +307,6 @@ def normderfactor(
     raise ValueError(
         f"Unknown temporal derivative normalization method {normdermethod}"
     )
-
 
 
 def tempder(
