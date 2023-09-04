@@ -121,10 +121,11 @@ def limitkern_sospars_2layers(mu1, mu2) -> np.ndarray:
                   = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
     based on Equation (57) in (Lindeberg 2016)
     """
-    pars = np.array(
-        [1 + mu1 + mu2 + mu1*mu2, -mu1 - mu2 - 2*mu1*mu2, mu1*mu2, 1.0, 0.0, 0.0]
-    )
-    return pars
+    pars = np.array([
+        1.0, 0.0, 0.0,
+        1 + mu1 + mu2 + mu1 * mu2, -mu1 - mu2 - 2 * mu1 * mu2, mu1 * mu2,
+    ])
+    return pars / pars[3]
 
 
 def limitkern_sospars_1layer(mu) -> np.ndarray:
