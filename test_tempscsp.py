@@ -12,7 +12,7 @@ def test_deltafcn1D():
     )
 
 
-def test_explictcascade():
+def test_explicitcascade():
     """Check explicit cascade for an example."""
     deltafcn = tempscsp.deltafcn1D(5)
     smooth1sos = tempscsp.limitkernfilt(deltafcn, 1, method='explicitcascade')
@@ -140,3 +140,5 @@ def test_limitkern_sospars_2layers():
 
 if __name__ == "__main__":
     test_limitkern_sospars_2layers()
+
+    
