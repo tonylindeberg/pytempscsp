@@ -409,8 +409,4 @@ def browniannoisesignal1D(length: int) -> np.ndarray:
 
     return np.cumsum(whitenoise)
 
-
-if __name__ == '__main__':
-    main()
-
-    
+   
