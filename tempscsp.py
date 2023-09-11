@@ -134,7 +134,7 @@ def limitkern_sospars_1layer(mu : float) -> np.ndarray:
     return np.array(pars)
 
 
-def limitkern_composedsospars_alllayers_list(muvec: np.array):
+def limitkern_composedsospars_alllayers_list(muvec: np.array) -> np.ndarray:
     """Returns the composed sos parameters for multiple first-order recursive filters 
     coupled in cascade.
 
