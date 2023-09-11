@@ -177,7 +177,7 @@ def limitkernfilt(
         c: float = 2.0,
         numlevels: int = 8,
         method: str = 'explicitcascade',
-        axis=-1
+        axis: int = -1
 ) -> np.ndarray:
     """Performs temporal filtering with a discrete approximation of the time-causal
     limit kernel based on numlevels recursive filters coupled in cascade.
