@@ -178,7 +178,7 @@ def limitkernfilt(
         numlevels: int = 8,
         method: str = 'explicitcascade',
         axis=-1
-):
+) -> np.ndarray:
     """Performs temporal filtering with a discrete approximation of the time-causal
     limit kernel based on numlevels recursive filters coupled in cascade.
     """
@@ -216,7 +216,7 @@ def limitkernfilt_mult(
         c: float = 2.0,
         numlevels: int = 8,
         axis: int = -1
-):
+) -> (np.ndarray, np.ndarray):
     """Computes a set of temporal scale-space representations for discrete
     approximations of the time-causal limit kernel within the scale range spanned
     by the standard deviations stddevmin and stddevmax (possibly extended because
