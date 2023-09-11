@@ -1,5 +1,5 @@
-site_name: PyTmpScSp
-site_url: https://pytmpscsp.readthedocs.io
+site_name: PyTempScSp
+site_url: https://pytempscsp.readthedocs.io
 nav:
   - Home: README.md
   - About: about.md
