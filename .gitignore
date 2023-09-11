@@ -9,6 +9,7 @@ venv/
 wheels/
 *.egg
 .ruff_cache
+site/
 
 # Mercurial
 .hg/
