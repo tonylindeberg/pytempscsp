@@ -45,16 +45,13 @@ in Equation (56) in (Lindeberg 2016). Such an implementation will also
 be more memory-efficient for processing e.g. spatio-temporal or spectro-temporal data.
 """
 from math import sqrt, log, ceil
-from typing import Optional
-
 from scipy.signal import lfilter, sosfilt
-
 import numpy as np
 
 
 def mufromstddev(
         stddev: float,
-        c: int = 2,
+        c: float = 2.0,
         numlevels: int = 8
 ) -> (np.ndarray, np.ndarray):
     """Determines the time constants mu for a set of recursive filters coupled
@@ -90,7 +87,8 @@ def mufromstddev(
 def mufromstddevs(
         stddevmin: float,
         stddevmax: float,
-        c: int = 2, numlevels=8
+        c: float = 2.0,
+        numlevels : int = 8
 ) -> (np.ndarray, np.ndarray):
     """Determine the time constants mu needed to compute a set of temporal scale-space
     representations over the scale range [stddevmin, stddevmax] in units of the
@@ -108,7 +106,10 @@ def mufromstddevs(
     return mu, sigma
 
 
-def limitkern_sospars_2layers(mu1, mu2) -> np.ndarray:
+def limitkern_sospars_2layers(
+        mu1 : float,
+        mu2 : float
+) -> np.ndarray:
     """Computes the sos parameters for two first-order recursive filters in cascade.
     """
     # The following is the composition of two generating functions of the form
@@ -122,7 +123,7 @@ def limitkern_sospars_2layers(mu1, mu2) -> np.ndarray:
     return pars / pars[3]
 
 
-def limitkern_sospars_1layer(mu) -> np.ndarray:
+def limitkern_sospars_1layer(mu : float) -> np.ndarray:
     """Returns the sos parameters for a single first-order recursive filter
     """
     # The following is a single generating function of the form
@@ -172,8 +173,8 @@ def limitkern_composedsospars_alllayers(muvec: np.ndarray) -> np.ndarray:
 
 def limitkernfilt(
         signal,
-        stddev,
-        c: int = 2,
+        stddev : float,
+        c: float = 2.0,
         numlevels: int = 8,
         method: str = 'explicitcascade',
         axis=-1
@@ -212,7 +213,7 @@ def limitkernfilt_mult(
         signal,
         stddevmin: float,
         stddevmax: float,
-        c: int = 2,
+        c: float = 2.0,
         numlevels: int = 8,
         axis: int = -1
 ):
@@ -259,7 +260,11 @@ def tempdelayfrommu(muvec: np.ndarray) -> np.ndarray:
     return np.cumsum(muvec)
 
 
-def tempdelayfromstddev(stddev: float, c: int = 2, numlevels: int = 8):
+def tempdelayfromstddev(
+        stddev: float,
+        c: float = 2.0,
+        numlevels: int = 8
+) -> float:
     """Returns the temporal delay associated with a discrete approximation of the
     time-causal limit kernel performed by the function limitkernfilt()
     """
@@ -272,9 +277,9 @@ def tempdelayfromstddev(stddev: float, c: int = 2, numlevels: int = 8):
 def tempdelaysfromstddevs(
         stddevmin: float,
         stddevmax: float,
-        c: int = 2,
+        c: float = 2.0,
         numlevels: int = 8
-):
+) -> np.ndarray:
     """Returns the temporal delays associated with a set of discrete approximations of
     the time-causal limit kernel performed by the function limitkernfilt_mult()
     """
@@ -288,7 +293,7 @@ def tempdelaysfromstddevs(
 def normderfactor(
         stddev: float,
         order: int,
-        normdermethod: Optional[str] = 'variance',
+        normdermethod: str = 'variance',
         gamma: float = 1.0
 ) -> float:
     """Normalization factor for scale-normalized derivatives."""
