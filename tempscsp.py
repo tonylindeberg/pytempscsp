@@ -183,7 +183,7 @@ def limitkernfilt(
     limit kernel based on numlevels recursive filters coupled in cascade.
 
     The scale parameter stddev is expressed in units of the standard deviation 
-    of the temporal scale-space kernel, corresponding the the square root of
+    of the temporal scale-space kernel, corresponding the square root of
     the parameter tau in the scientific papers, which is expressed in units
     of the variance of the temporal scale-space kernel.
 
@@ -235,7 +235,7 @@ def limitkernfilt_mult(
     and using numlevels recursive filters for the first temporal scale level.
 
     The scale parameter stddev is expressed in units of the standard deviation 
-    of the temporal scale-space kernel, corresponding the the square root of
+    of the temporal scale-space kernel, corresponding the square root of
     the parameter tau in the scientific papers, which is expressed in units
     of the variance of the temporal scale-space kernel.
 
