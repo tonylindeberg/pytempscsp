@@ -181,6 +181,17 @@ def limitkernfilt(
 ) -> np.ndarray:
     """Performs temporal filtering with a discrete approximation of the time-causal
     limit kernel based on numlevels recursive filters coupled in cascade.
+
+    The scale parameter stddev is expressed in units of the standard deviation 
+    of the temporal scale-space kernel, corresponding the the square root of
+    the parameter tau in the scientific papers, which is expressed in units
+    of the variance of the temporal scale-space kernel.
+
+    The distribution parameter c should be strictly > 1, where a larger value
+    leads to a more sparse sampling of the temporal scale levels implying
+    less computational work, and also shorter temporal delays, whereas a
+    smaller value of c leads to a denser sampling of the temporal scale
+    levels at the costs of more computational work and longer temporal delays.
     """
     muvec, sigmavec = mufromstddev(stddev, c, numlevels)
 
@@ -222,7 +233,18 @@ def limitkernfilt_mult(
     by the standard deviations stddevmin and stddevmax (possibly extended because
     of the ratio between successive scale levels as given by the scale ratio c),
     and using numlevels recursive filters for the first temporal scale level.
-    """
+
+    The scale parameter stddev is expressed in units of the standard deviation 
+    of the temporal scale-space kernel, corresponding the the square root of
+    the parameter tau in the scientific papers, which is expressed in units
+    of the variance of the temporal scale-space kernel.
+
+    The distribution parameter c should be strictly > 1, where a larger value
+    leads to a more sparse sampling of the temporal scale levels implying
+    less computational work, and also shorter temporal delays, whereas a
+    smaller value of c leads to a denser sampling of the temporal scale
+    levels at the costs of more computational work and longer temporal delays.
+"""
     muvec, sigmavec = mufromstddevs(stddevmin, stddevmax, c, numlevels)
 
     # Perform the smoothing until the first level that is to be preserved
