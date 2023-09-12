@@ -232,7 +232,8 @@ def limitkernfilt_mult(
     approximations of the time-causal limit kernel within the scale range spanned
     by the standard deviations stddevmin and stddevmax (possibly extended because
     of the ratio between successive scale levels as given by the scale ratio c),
-    and using numlevels recursive filters for the first temporal scale level.
+    and using numlevels recursive filters coupled in cascade for the first 
+    temporal scale level.
 
     The scale parameter stddev is expressed in units of the standard deviation 
     of the temporal scale-space kernel, corresponding the square root of
