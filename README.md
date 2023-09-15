@@ -15,7 +15,7 @@ of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
 
 Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
 Journal of Mathematical Imaging and Vision 55(1): 50-88.
-([preprint](https://arxiv.org/abs/1504.02648))
+([Open Access](https://doi.org/10.1007/s10851-015-0613-9))
 
 The time-causal limit kernel was first defined in Lindeberg (2016), however,
 then also in combination with a spatial domain, and experimentally tested on
