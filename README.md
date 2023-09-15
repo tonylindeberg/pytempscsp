@@ -7,6 +7,14 @@ temporal difference operators to the smoothed data.
 This code is the result of porting a subset of the routines in the Matlab
 package tempscsp to Python, however, with different interfaces for the functions.
 
+For examples of how to apply these functions for smoothing temporal signals
+to different scales in a time-causal manner, please see the enclosed Jupyter
+notebook tempsscspdemo.ipynb.
+
+For more technical descriptions about the respective functions, please see
+the documentation strings for the respective functions in the source code
+in tempscsp.py.
+
 ## References
 
 Lindeberg (2023) "A time-causal and time-recursive temporal scale-space representation
