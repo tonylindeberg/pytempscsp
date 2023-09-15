@@ -28,6 +28,6 @@ Journal of Mathematical Imaging and Vision 55(1): 50-88.
 The time-causal limit kernel was first defined in Lindeberg (2016), however,
 then also in combination with a spatial domain, and experimentally tested on
 video data. The later overview paper (Lindeberg 2023) gives a dedicated treatment
-for a a purely temporal domain, and also with relations to Koenderink's scale-time
+for a purely temporal domain, and also with relations to Koenderink's scale-time
 kernels and the ex-Gaussian kernel.
 
