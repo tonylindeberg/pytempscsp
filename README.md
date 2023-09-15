@@ -1,4 +1,4 @@
-# Temporal Scale Space Toolbox for Python
+# pytempscsp : Temporal Scale Space Toolbox for Python
 
 For performing temporal smoothing with the time-causal limit kernel and
 for computing discrete temporal derivative approximations by applying
