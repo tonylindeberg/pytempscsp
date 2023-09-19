@@ -1,11 +1,11 @@
-"""Unit tests for tempscsp."""
+"""Unit tests for """
 import numpy as np
-import tempscsp
+from pytempscsp import *
 
 
 def test_deltafcn1D():
     """Test the function returns expected output."""
-    delta_vec = tempscsp.deltafcn1D(4)
+    delta_vec = deltafcn1D(4)
     np.testing.assert_array_equal(
         delta_vec,
         np.array([1., 0., 0., 0.])
@@ -14,8 +14,8 @@ def test_deltafcn1D():
 
 def test_explicitcascade():
     """Check explicit cascade for an example."""
-    deltafcn = tempscsp.deltafcn1D(5)
-    smooth1sos = tempscsp.limitkernfilt(deltafcn, 1, method='explicitcascade')
+    deltafcn = deltafcn1D(5)
+    smooth1sos = limitkernfilt(deltafcn, 1, method='explicitcascade')
     assert np.allclose(
         smooth1sos,
         np.array([0.54095478, 0.28703476, 0.11196678, 0.03965, 0.01354296])
@@ -23,8 +23,8 @@ def test_explicitcascade():
 
 def test_sosfilt():
     """Check sosfilter for an example."""
-    deltafcn = tempscsp.deltafcn1D(5)
-    smooth1sos = tempscsp.limitkernfilt(deltafcn, 1, method='sosfilt')
+    deltafcn = deltafcn1D(5)
+    smooth1sos = limitkernfilt(deltafcn, 1, method='sosfilt')
     print(smooth1sos)
     assert np.allclose(
         smooth1sos,
@@ -44,7 +44,7 @@ def test_mufromstddev():
          0.5
     ]
     sigmavec_expected = [0.0078125, 0.015625, 0.03125, 0.0625, 0.125, 0.25, 0.5, 1.0]
-    muvec, sigmavec = tempscsp.mufromstddev(1, 2, 8)
+    muvec, sigmavec = mufromstddev(1, 2, 8)
     assert np.allclose(
         muvec_expected,
         muvec
@@ -98,7 +98,7 @@ def test_limitkern_composedsospars_alllayers():
     ]])
     assert np.allclose(
         sospars_expected,
-        tempscsp.limitkern_composedsospars_alllayers(muvec)
+        limitkern_composedsospars_alllayers(muvec)
     )
 
 def test_limitkern_composedsospars_alllayers_list():
@@ -119,7 +119,7 @@ def test_limitkern_composedsospars_alllayers_list():
                  0.04633275063795974]
     assert np.allclose(
         listformat_expected,
-        tempscsp.limitkern_composedsospars_alllayers_list(muvec)
+        limitkern_composedsospars_alllayers_list(muvec)
     )
 
 
@@ -135,7 +135,7 @@ def test_limitkern_sospars_2layers():
     ])
     assert np.allclose(
         res_expected,
-        tempscsp.limitkern_sospars_2layers(mu1=0.16143782776614768, mu2=0.5)
+        limitkern_sospars_2layers(mu1=0.16143782776614768, mu2=0.5)
     )
 
 if __name__ == "__main__":
