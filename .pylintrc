@@ -1,0 +1,4 @@
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=c,mu,a,b,C,t,Lt,Ltt,i,Gamma,mean1D,variance1D,deltafcn1D,whitenoisesignal1D,browniannoisesignal1D
