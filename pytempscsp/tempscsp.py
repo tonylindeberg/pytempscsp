@@ -58,7 +58,7 @@ def mufromstddev(
     in cascade that approximate the time-causal limit kernel at temporal
     scale stddev in units of the standard deviation of the time-causal
     limit kernel (not in terms of the variance tau, as used in the scientific papers)
-"""
+    """
     # Determine the tau value at each level in the temporal scale hierarchy
     # (according to Equation (18) in (Lindeberg 2016))
     tau = np.zeros(numlevels)
@@ -93,7 +93,7 @@ def mufromstddevs(
     """Determine the time constants mu needed to compute a set of temporal scale-space
     representations over the scale range [stddevmin, stddevmax] in units of the
     standard deviation of the time-causal limit kernel
-"""
+    """
     # Determine how many extra levels are needed above stddevmin, assuming
     # that this level is to be preserved and that stddevmax may need to be
     # increased to guarantee a ratio between temporal scale levels equal to c
@@ -111,11 +111,13 @@ def limitkern_sospars_2layers(
         mu2 : float
 ) -> np.ndarray:
     """Computes the sos parameters for two first-order recursive filters in cascade.
-"""
-    # The following is the composition of two generating functions of the form
-    # H1(z) * H2(z) = 1/(1 - mu1*(z-1)) * 1/(1 - mu2*(z-1))
-    #               = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
-    # based on Equation (57) in (Lindeberg 2016)
+
+    The resulting parameters [b0, b1, b2, a0, a1, a2] represent the composition of 
+    two generating functions of the form
+    H1(z) * H2(z) = 1/(1 - mu1*(z-1)) * 1/(1 - mu2*(z-1))
+                   = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
+    based on Equation (57) in (Lindeberg 2016)
+    """
     pars = np.array([
         1.0, 0.0, 0.0,
         1 + mu1 + mu2 + mu1 * mu2, -mu1 - mu2 - 2 * mu1 * mu2, mu1 * mu2,
@@ -125,12 +127,14 @@ def limitkern_sospars_2layers(
 
 def limitkern_sospars_1layer(mu : float) -> np.ndarray:
     """Returns the sos parameters for a single first-order recursive filter
-"""
-    # The following is a single generating function of the form
-    # H(z) = 1/(1 - mu*(z-1))
-    #      = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
-    # according to Equation (57) in (Lindeberg 2016)
-    pars = [1 + mu, -mu, 0, 1.0, 0, 0]
+
+    The resulting parameters [b0, b1, b2, a0, a1, a2] represent a single generating 
+    function of the form
+    H(z) = 1/(1 - mu*(z-1))
+         = (b0 + b1*z + b2*z^2)/(a0 + a1*z + a2*z^2)
+    according to Equation (57) in (Lindeberg 2016)
+    """
+    pars = [1.0, 0, 0, 1 + mu, -mu, 0]
     return np.array(pars)
 
 
@@ -141,7 +145,7 @@ def limitkern_composedsospars_alllayers_list(muvec: np.array) -> np.ndarray:
     This is done by recursive list concatenation (according to the documentation
     of another sos filtering routine, however, not the same as then later being
     used in the code below)
-"""
+    """
     if not isinstance(muvec, np.ndarray):
         raise TypeError("muvec should be an array!")
 
@@ -165,9 +169,9 @@ def limitkern_composedsospars_alllayers_list(muvec: np.array) -> np.ndarray:
 
 def limitkern_composedsospars_alllayers(muvec: np.ndarray) -> np.ndarray:
     """Computes the sos parameters for computing the convolution with a discrete
-approximation of the time-causal limit kernel, as defined from the time constants
-in the mu vector muvec.
-"""
+    approximation of the time-causal limit kernel, as defined from the time constants
+    in the mu vector muvec.
+    """
     listformat = limitkern_composedsospars_alllayers_list(muvec)
     numlayers = int(round(len(listformat) / 6))
 
@@ -197,7 +201,7 @@ def limitkernfilt(
     less computational work, and also shorter temporal delays, whereas a
     smaller value of c leads to a denser sampling of the temporal scale
     levels at the costs of more computational work and longer temporal delays.
-"""
+    """
     muvec, _ = mufromstddev(stddev, c, numlevels)
 
     if method == 'explicitcascade':
@@ -250,7 +254,7 @@ def limitkernfilt_mult(
     less computational work, and also shorter temporal delays, whereas a
     smaller value of c leads to a denser sampling of the temporal scale
     levels at the costs of more computational work and longer temporal delays.
-"""
+    """
     muvec, sigmavec = mufromstddevs(stddevmin, stddevmax, c, numlevels)
 
     # Perform the smoothing until the first level that is to be preserved
@@ -284,7 +288,7 @@ def tempdelayfrommu(muvec: np.ndarray) -> np.ndarray:
     The temporal delay for a single recursive filter is mu, whereas the temporal
     delay for a set of recursive filters in cascade is the sum of the mu-values
     (see the text preceding Equation (58) in (Lindeberg 2016))
-"""
+    """
     return np.cumsum(muvec)
 
 
@@ -295,7 +299,7 @@ def tempdelayfromstddev(
 ) -> float:
     """Returns the temporal delay associated with a discrete approximation of the
     time-causal limit kernel performed by the function limitkernfilt()
-"""
+    """
     muvec, _ = mufromstddev(stddev, c, numlevels)
     delay = tempdelayfrommu(muvec)
 
@@ -310,7 +314,7 @@ def tempdelaysfromstddevs(
 ) -> np.ndarray:
     """Returns the temporal delays associated with a set of discrete approximations of
     the time-causal limit kernel performed by the function limitkernfilt_mult()
-"""
+    """
     muvec, sigmavec = mufromstddevs(stddevmin, stddevmax, c, numlevels)
     delay = tempdelayfrommu(muvec)
     numoutputs = len(sigmavec) - numlevels + 1
@@ -325,7 +329,7 @@ def normderfactor(
         gamma: float = 1.0
 ) -> float:
     """Normalization factor for scale-normalized derivatives.
-"""
+    """
     if normdermethod == "nonormalization":
         return 1.0
 
@@ -348,7 +352,7 @@ def tempder(
 ) -> np.ndarray:
     """Computes scale-normalized temporal derivatives from an already computed temporal
     scale-space representation.
-"""
+    """
     # a and b are the parameters for the linear filtering operations
     a = 1
 
@@ -387,17 +391,18 @@ def quasiquad(
     obtained by convolution with the time-causal limit kernel may call
     for a better determination of the relative weighting factor C and then also as
     function of the distribution parameter c of the time-causal limit kernel.
-"""
+    """
     # The scale normalization by dividing by stddev^(2*Gamma) is transfered
     # to other gamma parameters for the 1:st- and 2:nd-order derivatives
     Lt = tempder(insignal, 'Lt', stddev, normdermethod, 1 - Gamma / 2, axis)
     Ltt = tempder(insignal, 'Ltt', stddev, normdermethod, 1 - Gamma / 4, axis)
+
     return Lt * Lt + C * Ltt * Ltt
 
 
 def deltafcn1D(length: int) -> np.ndarray:
     """Discrete delta function in 1-D.
-"""
+    """
     signal = np.zeros(length)
     signal[0] = 1.0
 
@@ -406,7 +411,7 @@ def deltafcn1D(length: int) -> np.ndarray:
 
 def mean1D(signal) -> float:
     """Computes the temporal mean of a non-negative temporal signal.
-"""
+    """
     if signal.ndim != 1:
         raise ValueError('Only implemented for 1-D signals')
 
@@ -418,7 +423,7 @@ def mean1D(signal) -> float:
 
 def variance1D(signal) -> float:
     """Computes the temporal variance of a non-negative temporal signal.
-"""
+    """
     if signal.ndim != 1:
         raise ValueError('Only implemented for 1-D signals')
 
@@ -433,7 +438,7 @@ def variance1D(signal) -> float:
 
 def whitenoisesignal1D(length: int) -> np.ndarray:
     """Generates a white noise signal of a given length.
-"""
+    """
     signal = np.random.normal(0.0, 1.0, length)
 
     return signal
@@ -441,7 +446,7 @@ def whitenoisesignal1D(length: int) -> np.ndarray:
 
 def browniannoisesignal1D(length: int) -> np.ndarray:
     """Generates a brownian noise signal of a given length.
-"""
+    """
     whitenoise = whitenoisesignal1D(length)
 
     return np.cumsum(whitenoise)
