@@ -157,9 +157,11 @@ def limitkern_composedsospars_alllayers_list(muvec: np.array) -> np.ndarray:
                 limitkern_sospars_2layers(mu1, mu2),
                 limitkern_composedsospars_alllayers_list(muvec[2:])
         ])
+
     if len(muvec) == 2:
         mu1, mu2 = muvec[:2]
         return limitkern_sospars_2layers(mu1, mu2)
+
     if len(muvec) == 1:
         mu1 = muvec[0]
         return limitkern_sospars_1layer(mu1)
