@@ -9,7 +9,8 @@ package tempscsp to Python, however, with different interfaces for the functions
 
 For examples of how to apply these functions for smoothing temporal signals
 to different temporal scales in a fully time-causal manner, please see the
-enclosed Jupyter notebook tempscspdemo.ipynb.
+enclosed Jupyter notebook [tempscspdemo.ipynb](/tempscspdemo.ipynb).
+
 
 For more technical descriptions about the respective functions, please see
 the documentation strings for the respective functions in the source code
