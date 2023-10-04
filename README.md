@@ -15,6 +15,15 @@ For more technical descriptions about the respective functions, please see
 the documentation strings for the respective functions in the source code
 in tempscsp.py.
 
+## Installation
+
+This package is available 
+through pip and can installed by
+
+```bash
+pip install pytempscsp
+```
+
 ## References
 
 Lindeberg (2023) "A time-causal and time-recursive temporal scale-space representation
@@ -30,13 +39,3 @@ then also in combination with a spatial domain, and experimentally tested on
 video data. The later overview paper (Lindeberg 2023) gives a dedicated treatment
 for a purely temporal domain, and also with relations to Koenderink's scale-time
 kernels and the ex-Gaussian kernel.
-
-## Installation
-
-This package is available through pip and can installed by
-
-```bash
-pip install pytempscsp
-```
-
-
