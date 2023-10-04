@@ -9,7 +9,7 @@ package tempscsp to Python, however, with different interfaces for the functions
 
 For examples of how to apply these functions for smoothing temporal signals
 to different temporal scales in a fully time-causal manner, please see the
-enclosed Jupyter notebook tempscspdemo.ipynb.
+enclosed Jupyter notebook [tempscspdemo.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/tempscspdemo.ipynb).
 
 For more technical descriptions about the respective functions, please see
 the documentation strings for the respective functions in the source code
@@ -30,4 +30,12 @@ then also in combination with a spatial domain, and experimentally tested on
 video data. The later overview paper (Lindeberg 2023) gives a dedicated treatment
 for a purely temporal domain, and also with relations to Koenderink's scale-time
 kernels and the ex-Gaussian kernel.
+
+## Installation
+
+This package is available in pip and can installed by
+
+pip install pytempscsp
+
+
 
