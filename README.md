@@ -31,3 +31,11 @@ video data. The later overview paper (Lindeberg 2023) gives a dedicated treatmen
 for a purely temporal domain, and also with relations to Koenderink's scale-time
 kernels and the ex-Gaussian kernel.
 
+## Installation
+
+This package is available in pip and can installed by
+
+pip install pytempscsp
+
+
+
