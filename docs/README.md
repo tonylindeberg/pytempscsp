@@ -33,9 +33,10 @@ kernels and the ex-Gaussian kernel.
 
 ## Installation
 
-This package is available in pip and can installed by
+This package is available through pip and can installed by
 
+```bash
 pip install pytempscsp
-
+```
 
 
