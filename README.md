@@ -24,6 +24,12 @@ through pip and can installed by
 pip install pytempscsp
 ```
 
+This package can also be downloaded directly from GitHub:
+
+```bash
+git clone git@github.com:tonylindeberg/pytempscsp.git
+```
+
 ## References
 
 Lindeberg (2023) "A time-causal and time-recursive temporal scale-space representation
