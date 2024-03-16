@@ -13,7 +13,7 @@ enclosed Jupyter notebook [tempscspdemo.ipynb](https://github.com/tonylindeberg/
 
 For more technical descriptions about the respective functions, please see
 the documentation strings for the respective functions in the source code
-in tempscsp.py.
+in [tempscsp.py](https://github.com/tonylindeberg/pytempscsp/blob/main/tempscsp/tempscsp.py).
 
 ## Installation
 
