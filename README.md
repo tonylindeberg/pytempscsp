@@ -43,6 +43,15 @@ in
 and
 [bandpass.py](https://github.com/tonylindeberg/pytempscsp/blob/main/pytempscsp/bandpass.py).
 
+## Dependencies
+
+Some parts of the code depend on the pyscsp library available at
+[GitHub](https://github.com/tonylindeberg/pytempscsp/blob/main/pyscsp/README.md).
+
+The Jupyter notebooks for computing visualizations on bandpass
+wavelets depend on a function in the PyWavelets library for generating
+the input data.
+
 ## Installation
 
 This package is available 
