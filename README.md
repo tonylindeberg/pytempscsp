@@ -18,7 +18,7 @@ in [tempscsp.py](https://github.com/tonylindeberg/pytempscsp/blob/main/pytempscs
 ## Time-causal temporal derivatives and bandpass wavelets
 
 For examples of how to use extensions of this code for computing
-time-causal temporal derivative, please see the enclosed Jupyter
+time-causal temporal derivatives, please see the enclosed Jupyter
 notebooks
 [sineexpwave.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/sineexpwave.ipynb),
 [vibration.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/vibration.ipynb)
