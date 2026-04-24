@@ -13,7 +13,7 @@ kernel (DoG)
 and comparing to (iii) the time-causal bandpass representation
 constructed from differences between scale channels constructed
 from smoothing with discrete approximations of single truncated
-exponential kernels in terms of first-order recursive filters.
+exponential kernels in terms of first-order recursive filters (DoE).
 
 References:
 
