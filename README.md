@@ -46,7 +46,7 @@ and
 ## Dependencies
 
 Some parts of the code depend on the pyscsp library available at
-[GitHub](https://github.com/tonylindeberg/pyscsp).
+[https://github.com/tonylindeberg/pyscsp](https://github.com/tonylindeberg/pyscsp).
 
 The Jupyter notebooks for computing visualizations of bandpass
 wavelets depend on a function in the PyWavelets library for generating
