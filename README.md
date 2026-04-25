@@ -13,7 +13,16 @@ enclosed Jupyter notebook [tempscspdemo.ipynb](https://github.com/tonylindeberg/
 
 For more technical descriptions about the respective functions, please see
 the documentation strings for the respective functions in the source code
-in [tempscsp.py](https://github.com/tonylindeberg/pytempscsp/blob/main/pytempscsp/tempscsp.py).
+in
+[tempscsp.py](https://github.com/tonylindeberg/pytempscsp/blob/main/pytempscsp/tempscsp.py).
+
+The actual computations of the smoothed signals and the temporal
+derivatives is performed with computationally very efficient
+first-order recursive filters and small support temporal difference
+operators. For more explicit visualizations of the equivalent
+smoothing filters and temporal derivative computation filters, please
+see the enclosed Jupyter notebook
+[kernelgraphs.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/kernelgraphs.ipynb).
 
 ## Time-causal temporal derivatives and bandpass wavelets
 
@@ -28,7 +37,7 @@ and
 For examples of how to use extensions of this code for computing
 bandpass wavelets based on either 
 (i) differences-of-time-causal-limit-kernels (DoT),
-(ii) differences-of-Gaussians-kernels (DoG) or
+(ii) differences-of-Gaussians (DoG) or
 (iii) differences-of-exponentials (DoE), 
 please see the enclosed Jupyter
 notebooks

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytempscsp"
-version = "1.0.1"
+version = "1.0.3"
 description = "Temporal Scale-Space Toolbox for Python."
 authors = ["Tony Lindeberg <tony@kth.se>"]
 license = "MIT"
