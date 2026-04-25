@@ -73,7 +73,7 @@ Lindeberg (2023) "A time-causal and time-recursive temporal scale-space represen
 of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
 ([Open Access](http://dx.doi.org/10.1007/s00422-022-00953-6))
 
-Lindeberg (2023) "Time-causal and time-recursive wavelets", Frontiers
+Lindeberg (2026) "Time-causal and time-recursive wavelets", Frontiers
 in Signal Processing, to appear, preprint at  arXiv:2510.05834.
 ([Open Access](https://doi.org/10.48550/arXiv.2510.05834))
 
@@ -90,4 +90,4 @@ kernels and the ex-Gaussian kernel.
 The extension to time-causal temporal derivatives was first performed 
 in Lindeberg (2016), additionally considered in Lindeberg (2023) and
 then extended to bandpass wavelets and more general time-causal
-wavelets in Lindeberg (2025).
+wavelets in Lindeberg (2026).
