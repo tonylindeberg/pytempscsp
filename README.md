@@ -22,7 +22,7 @@ first-order recursive filters and small support temporal difference
 operators. For more explicit visualizations of the equivalent
 smoothing filters and temporal derivative computation filters, please
 see the enclosed Jupyter notebook
-[kernelgraphs.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/kernelgraphs.ipynb).
+[kernelgraphs-ref.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/kernelgraphs-ref.ipynb).
 
 ## Time-causal temporal derivatives and bandpass wavelets
 
