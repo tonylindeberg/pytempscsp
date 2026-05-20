@@ -6,8 +6,8 @@ the time-causal limit kernel.
 
 References:
 
-Lindeberg (2025) "Time-causal and time-recursive wavelets", 
-draft manuscript.
+Lindeberg (2005, 2026) "Time-causal and time-recursive wavelets", 
+Frontiers in Signal Processing, to appear, preprint at arXiv:2510.05834.
 
 Lindeberg (2023) "A time-causal and time-recursive temporal scale-space 
 representation of temporal signals and past time", 
@@ -16,12 +16,12 @@ Biological Cybernetics 117(1-2): 21-59.
 
 from math import sqrt, log, ceil, exp
 import numpy as np
-from scipy.ndimage import correlate1d
 
 from pyscsp.discscsp import Lpnorm, mean1D
 from pyscsp.gaussders import make1Dgaussderfilter
 from pyscsp.scsel import interpolparextr
 from pytempscsp.tempscsp import deltafcn1D, limitkernfilt, limitkernfilt_mult
+from pytempscsp.tempscsp import tempder
 
 
 def sigmaarray8() :
@@ -39,24 +39,17 @@ def limitkern_der(
     """Computes the discrete approximation of the derivative of the
     time-causal limit kernel of order derorder, with the scale parameter
     in terms of the standard deviation stddev of the kernel"""
+
+    # The factor C = 5 is suitable for visualization when c >= sqrt(2)
+    C = 5 if (c > 1.4) else 10
+    
     if length < 0:
-        length = 10 * ceil(1 + stddev)
+        length = C * ceil(1 + stddev)
 
     deltafcn = deltafcn1D(length)
     limitkernel = limitkernfilt(deltafcn, stddev, c, numlevels)
 
-    if derorder == 0:
-        return limitkernel
-
-    if derorder == 1:
-        dt = np.array([0,-1, 1])
-        return stddev**gamma * correlate1d(np.roll(limitkernel, 1), dt)
-
-    if derorder == 2:
-        dtt = np.array([0, 0, 1, -2, 1])
-        return stddev**(2*gamma) * correlate1d(np.roll(limitkernel, 2),dtt)
-
-    raise ValueError(f"Not implemented for order {derorder}")
+    return tempder(limitkernel, derorder, stddev, 'variance', gamma)
 
 
 def limitkern_lpnorm(
@@ -79,24 +72,13 @@ def limitkern_lpnorm(
     return Lpnorm(derkernel, p)
 
 
-def tempder(
+def tempdiff(
         signal,
         derorder : int
 ) -> np.ndarray:
     """Computes the temporal difference of order derorder of a signal"""
 
-    if derorder == 0:
-        return signal
-
-    if derorder == 1:
-        dt = np.array([-1, +1, 0])
-        return correlate1d(signal, dt)
-
-    if derorder == 2:
-        dtt = np.array([1, -2, 1, 0, 0])
-        return correlate1d(signal, dtt)
-
-    raise ValueError(f"Not implemented for order {derorder}")
+    return tempder(signal, derorder, 1, "nonormalization", 0)
 
 
 def map_limitkern_lpnorm(
@@ -162,7 +144,7 @@ def limitkernders_mult(
 
     for layer, sigma in np.ndenumerate(sigmas):
         outarray[layer, :] = \
-          sigma**(gamma*derorder) * tempder(tempscsp[layer, :], derorder)
+          sigma**(gamma*derorder) * tempdiff(tempscsp[layer, :], derorder)
 
     return outarray[:, :-truncate], sigmas
 

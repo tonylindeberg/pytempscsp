@@ -9,8 +9,9 @@ package tempscsp to Python, however, with different interfaces for the functions
 
 References:
 
-Lindeberg (2023) "A time-causal and time-recursive temporal scale-space representation
-of temporal signals and past time", Biological Cybernetics 117(1-2): 21-59.
+Lindeberg (2023) "A time-causal and time-recursive temporal scale-space 
+representation of temporal signals and past time", 
+Biological Cybernetics 117(1-2): 21-59.
 
 Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
 Journal of Mathematical Imaging and Vision 55(1): 50-88.
@@ -45,8 +46,9 @@ in Equation (56) in (Lindeberg 2016). Such an implementation will also
 be more memory-efficient for processing e.g. spatio-temporal or spectro-temporal data.
 """
 from math import sqrt, log, ceil
-from scipy.signal import lfilter, sosfilt
+from typing import Union
 import numpy as np
+from scipy.signal import lfilter, sosfilt
 
 
 def mufromstddev(
@@ -190,8 +192,9 @@ def limitkernfilt(
         method: str = 'explicitcascade',
         axis: int = -1
 ) -> np.ndarray:
-    """Performs temporal filtering with a discrete approximation of the time-causal
-    limit kernel based on numlevels recursive filters coupled in cascade.
+    """Performs temporal filtering with a discrete approximation of the 
+    time-causal limit kernel based on numlevels recursive filters coupled 
+    in cascade.
 
     The scale parameter stddev is expressed in units of the standard deviation 
     of the temporal scale-space kernel, corresponding the square root of
@@ -346,33 +349,38 @@ def normderfactor(
 
 def tempder(
         insignal,
-        derivative: str,
-        stddev: float,
+        derivative: Union[str, int],
+        stddev: float = 1.0,
         normdermethod: str = 'variance',
         gamma: float = 1.0,
         axis: int = -1
 ) -> np.ndarray:
     """Computes scale-normalized temporal derivatives from an already computed temporal
-    scale-space representation.
+    scale-space representation. The default values of the parameters are set in 
+    such a way that if this function is called with only two arguments, then
+    the result will correspond to using plain unnormalized difference operators.
     """
     # a and b are the parameters for the linear filtering operations
     a = 1
 
-    if derivative == 'Lt':
+    if derivative == 0:
+        return insignal
+    
+    if derivative == 'Lt' or derivative == 1:
         b = [1, -1]
         return (
                 normderfactor(stddev, 1, normdermethod, gamma) *
                 lfilter(b, a, insignal, axis)
         )
 
-    if derivative == 'Ltt':
+    if derivative == 'Ltt' or derivative == 2:
         b = [1, -2, 1]
         return (
                 normderfactor(stddev, 2, normdermethod, gamma) *
                 lfilter(b, a, insignal, axis)
         )
 
-    raise ValueError(f'Unknown temporal derivative method {type}')
+    raise ValueError(f'Unknown temporal derivative method {derivative}')
 
 
 def quasiquad(

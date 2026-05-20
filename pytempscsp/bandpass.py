@@ -17,8 +17,8 @@ exponential kernels in terms of first-order recursive filters (DoE).
 
 References:
 
-Lindeberg (2025) "Time-causal and time-recursive wavelets",
-arXiv preprint 2510.05834.
+Lindeberg (2005, 2026) "Time-causal and time-recursive wavelets", 
+Frontiers in Signal Processing, to appear, preprint at arXiv:2510.05834.
 
 Lindeberg (2023) "A time-causal and time-recursive temporal scale-space 
 representation of temporal signals and past time", 
