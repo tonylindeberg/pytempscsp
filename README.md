@@ -4,9 +4,6 @@ For performing temporal smoothing with the time-causal limit kernel and
 for computing discrete temporal derivative approximations by applying
 temporal difference operators to the smoothed data.
 
-This code is the result of porting a subset of the routines in the Matlab
-package tempscsp to Python, however, with different interfaces for the functions.
-
 For examples of how to apply these functions for smoothing temporal signals
 to different temporal scales in a fully time-causal manner, please see the
 enclosed Jupyter notebook [tempscspdemo.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/tempscspdemo.ipynb).
@@ -27,7 +24,7 @@ see the enclosed Jupyter notebook
 ## Time-causal temporal derivatives and bandpass wavelets
 
 For examples of how to use extensions of this code for computing
-time-causal temporal derivatives, please see the enclosed Jupyter
+time-causal temporal derivatives at multiple scales, please see the enclosed Jupyter
 notebooks
 [sineexpwave.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/sineexpwave.ipynb),
 [vibration.ipynb](https://github.com/tonylindeberg/pytempscsp/blob/main/vibration.ipynb)

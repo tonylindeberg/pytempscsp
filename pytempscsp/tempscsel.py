@@ -127,16 +127,7 @@ def limitkernders_mult(
     less computational work, and also shorter temporal delays, whereas a
     smaller value of c leads to a denser sampling of the temporal scale
     levels at the costs of more computational work and longer temporal delays.
-
-    Note: The length of the signal over the temporal domain is truncated
-    by truncate = 4 units at the end, to avoid wraparound effects of the
-    correlation function used for computing the temporal derivatives.
-    Thereby, the symmetry of the signal is broken. If you need to maintain
-    symmetry with respect to a central origin, then use the companion
-    function limitkernders_mult_symm() instead.
     """
-    truncate = 4
-
     tempscsp, sigmas = \
       limitkernfilt_mult(signal, stddevmin, stddevmax, c, numlevels)
 
@@ -146,30 +137,7 @@ def limitkernders_mult(
         outarray[layer, :] = \
           sigma**(gamma*derorder) * tempdiff(tempscsp[layer, :], derorder)
 
-    return outarray[:, :-truncate], sigmas
-
-
-def limitkernders_mult_symm(
-        signal,
-        stddevmin : float,
-        stddevmax : float,
-        derorder : int,
-        gamma : float = 1.0,
-        c: float = 2.0,
-        numlevels: int = 8
-) -> (np.ndarray, np.ndarray):
-    """Performs a similar operation as the function limitkernders_mult(),
-    however, with the important difference that truncation by 4 units 
-    is also performed at the lower end, to maintain a symmetric origin 
-    for processed signal.
-    """
-    truncate = 4
-
-    outarray, sigmas = \
-      limitkernders_mult(signal, stddevmin, stddevmax, \
-                         derorder, gamma, c, numlevels)
-
-    return outarray[:, truncate:], sigmas
+    return outarray[:, :], sigmas
 
 
 def globscspmax(
