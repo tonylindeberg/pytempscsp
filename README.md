@@ -80,8 +80,8 @@ of temporal signals and past time", Biological Cybernetics 117 (1-2): 21-59.
 ([Open Access](http://dx.doi.org/10.1007/s00422-022-00953-6))
 
 Lindeberg (2026) "Time-causal and time-recursive wavelets", Frontiers
-in Signal Processing, to appear, preprint at  arXiv:2510.05834.
-([Open Access](https://doi.org/10.48550/arXiv.2510.05834))
+in Signal Processing, 6: 1786202:1-32.
+([Open Access](https://doi.org/10.3389/frsip.2026.1786202))
 
 Lindeberg (2016) "Time-causal and time-recursive spatio-temporal receptive fields",
 Journal of Mathematical Imaging and Vision 55(1): 50-88.
